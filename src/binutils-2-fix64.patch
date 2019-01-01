@@ -1,0 +1,20 @@
+diff --git a/gas/config/tc-i386.c b/gas/config/tc-i386.c
+index 80812cfb..8162c9b7 100644
+--- a/gas/config/tc-i386.c
++++ b/gas/config/tc-i386.c
+@@ -9500,7 +9500,6 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
+       /* PR 16858: Do not modify weak function references.  */
+       && ! fixP->fx_pcrel)
+     {
+-#if !defined (TE_PEP)
+       /* For x86 PE weak function symbols are neither PC-relative
+ 	 nor do they set S_IS_FUNCTION.  So the only reliable way
+ 	 to detect them is to check the flags of their containing
+@@ -9509,7 +9508,6 @@ md_apply_fix (fixS *fixP, valueT *valP, segT seg ATTRIBUTE_UNUSED)
+ 	  && S_GET_SEGMENT (fixP->fx_addsy)->flags & SEC_CODE)
+ 	;
+       else
+-#endif
+       value -= S_GET_VALUE (fixP->fx_addsy);
+     }
+ #endif
